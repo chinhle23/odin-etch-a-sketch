@@ -9,6 +9,9 @@ for (let i = 1; i <= 16; i++) {
     let squareDiv = document.createElement('div');
     squareDiv.setAttribute('class', 'square');
     squareDiv.setAttribute('id', `${i}-${j}`);
+    squareDiv.addEventListener('mouseover', function (e) {
+      squareDiv.style.backgroundColor = 'blue';
+    });
     rowDiv.appendChild(squareDiv);
   }
 }
