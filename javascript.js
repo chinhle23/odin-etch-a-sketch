@@ -1,3 +1,9 @@
+const hexValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+
+function randomIndex () {
+  return Math.floor(Math.random() * 15);
+}
+
 const container = document.querySelector('.container');
 
 function removeGrid () {
@@ -25,7 +31,8 @@ btn.addEventListener('click', function (e) {
       squareDiv.setAttribute('class', 'square');
       squareDiv.setAttribute('id', `${i}-${j}`);
       squareDiv.addEventListener('mouseover', function (e) {
-        squareDiv.style.backgroundColor = 'blue';
+        let randomColor = `#${hexValues[randomIndex()]}${hexValues[randomIndex()]}${hexValues[randomIndex()]}${hexValues[randomIndex()]}${hexValues[randomIndex()]}${hexValues[randomIndex()]}`
+        squareDiv.style.backgroundColor = randomColor;
       });
       rowDiv.appendChild(squareDiv);
     }
