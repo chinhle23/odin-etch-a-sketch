@@ -1,5 +1,5 @@
-function randomRGB() {
-  return Math.floor(Math.random() * 255);
+function randomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 
 const container = document.querySelector('.container');
@@ -18,6 +18,7 @@ btn.addEventListener('click', function (e) {
   while (gridSize < 10 || gridSize > 100 || isNaN(gridSize)) {
     gridSize = +prompt('Enter a number between 10 & 100');
   }
+  let lightness = 50;
   for (let i = 1; i <= gridSize; i++) {
     let rowDiv = document.createElement('div');
     rowDiv.setAttribute('class', 'row');
@@ -28,10 +29,10 @@ btn.addEventListener('click', function (e) {
       squareDiv.setAttribute('class', 'square');
       squareDiv.setAttribute('id', `${i}-${j}`);
       squareDiv.addEventListener('mouseover', function (e) {
-        let redVal = randomRGB();
-        let greenVal = randomRGB();
-        let blueVal = randomRGB();
-        squareDiv.style.backgroundColor = `rgb(${redVal}, ${greenVal}, ${blueVal})`;
+        let hueAngle = randomInt(360);
+        let satPer = randomInt(100);
+        lightness = Math.floor(lightness * 0.9);
+        squareDiv.style.backgroundColor = `hsl(${hueAngle} ${satPer}% ${lightness}%)`;
       });
       rowDiv.appendChild(squareDiv);
     }
